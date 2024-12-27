@@ -6,7 +6,7 @@
 /*   By: mcauchy- <mcauchy-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 20:45:46 by mcauchy-          #+#    #+#             */
-/*   Updated: 2024/12/27 12:31:20 by mcauchy-         ###   ########.fr       */
+/*   Updated: 2024/12/27 16:32:27 by mcauchy-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ int	main(int ac, char **av)
 		i++;
 	}
 	print_lst(stack_a);
-	reverse(&stack_a);
+	reverse_rotate(&stack_a);
 	print_lst(stack_a);
 }

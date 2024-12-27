@@ -6,7 +6,7 @@
 /*   By: mcauchy- <mcauchy-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 20:45:50 by mcauchy-          #+#    #+#             */
-/*   Updated: 2024/12/27 14:08:21 by mcauchy-         ###   ########.fr       */
+/*   Updated: 2024/12/27 16:31:47 by mcauchy-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,8 +161,8 @@ int	rrb(t_stack **stack_b)
 
 int	rrr(t_stack **stack_a, t_stack **stack_b)
 {
-	if ((ft_listize(stack_a) < 2) || (ft_lstsize(stack_b) < 2))
-		return (-1);
+	// if ((ft_listize(stack_a) < 2) || (ft_lstsize(stack_b) < 2))
+	// 	return (-1);
 	reverse_rotate(stack_a);
 	reverse_rotate(stack_b);
 	ft_putendl_fd("rrr", 1);
