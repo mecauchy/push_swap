@@ -6,7 +6,7 @@
 /*   By: mcauchy- <mcauchy-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 20:45:46 by mcauchy-          #+#    #+#             */
-/*   Updated: 2024/12/27 16:32:27 by mcauchy-         ###   ########.fr       */
+/*   Updated: 2025/01/02 17:27:49 by mcauchy-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ int	main(int ac, char **av)
 	stack_b = NULL;
 	while (i < ac)
 	{
-		// check if digit, int overflow, duplicates (parsing)
 		ft_lstadd_back(&stack_a, ft_lstnew(atoi(av[i])));
 		i++;
 	}
+	check_args(ac, av);
 	print_lst(stack_a);
 	reverse_rotate(&stack_a);
 	print_lst(stack_a);

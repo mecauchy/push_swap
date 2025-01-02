@@ -6,7 +6,7 @@
 /*   By: mcauchy- <mcauchy-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 20:45:56 by mcauchy-          #+#    #+#             */
-/*   Updated: 2024/12/27 14:03:29 by mcauchy-         ###   ########.fr       */
+/*   Updated: 2025/01/02 17:31:23 by mcauchy-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,22 @@ int		rrb(t_stack **stack_b);
 void	ft_putendl_fd(char *s, int fd);
 int		reverse_rotate(t_stack **lst);
 t_stack	*lst_before_last(t_stack *lst);
+
+
+//A SUPP LIBFT//
+int	ft_isalnum(int c);
+char	**ft_split(char const *s, char c);
+// static char	*ft_wdcpy(char *str, int size);
+// static int	ft_wrdcnt(char *str, char charset);
+// static int	ft_ltrcnt(char *str, char charset);
+// static int	ft_is_sep(char *str, char charset);
+int	ft_atoi(const char *str);
+int	ft_isdigit(int c);
+
+int		check_overflow(long nb);
+int		ft_len(char **av);
+int		check_doublon(char **av);
+int		check_num(char *av);
+void	check_args(int ac, char **av);
 
 #endif

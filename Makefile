@@ -6,13 +6,13 @@
 #    By: mcauchy- <mcauchy-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/26 20:45:33 by mcauchy-          #+#    #+#              #
-#    Updated: 2024/12/26 20:46:17 by mcauchy-         ###   ########.fr        #
+#    Updated: 2025/01/02 16:35:21 by mcauchy-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	push_swap
 
-SRCS_FILES	=	push_swap.c utils.c move.c singleton.c
+SRCS_FILES	=	push_swap.c utils.c move.c singleton.c parsing.c
 
 SRC_DIR		=	srcs
 
@@ -26,7 +26,7 @@ CC			=	cc
 
 RM			=	rm -rf
 
-CFLAGS		=	
+CFLAGS		=	-Wall -Wextra -Werror
 
 all:		$(NAME)
 
