@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mcauchy- <mcauchy-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/04 17:46:40 by mcauchy-          #+#    #+#             */
+/*   Updated: 2025/01/04 17:48:43 by mcauchy-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
 int	ft_isdigit(int c)
@@ -6,6 +18,7 @@ int	ft_isdigit(int c)
 		return (1);
 	return (0);
 }
+
 int	ft_atoi(const char *str)
 {
 	int	i;
@@ -116,15 +129,14 @@ int	ft_isalnum(int c)
 	return (0);
 }
 
-
 //libft///////////////////////////////////////////////////////////////////////////////
 
-// int	check_overflow(long nb)
-// {
-// 	if (nb < -2147483648 || nb > 2147483647)
-// 		return (1);
-// 	return (0);
-// }
+int	check_overflow(long nb)
+{
+	if (nb < -2147483648 || nb > 2147483647)
+		return (0);
+	return (1);
+}
 
 int	ft_len(char **av)
 {
@@ -143,7 +155,7 @@ int	check_doublon(char **av)
 	int	len;
 
 	len = ft_len(av);
-	i = 0;
+	i = 1;
 	while (i < len)
 	{
 		j = i + 1;
@@ -163,52 +175,77 @@ int	check_num(char *av)
 	int	i;
 
 	i = 0;
-	if (av[i] == '-')
+	if (av[i] == '-' || av[i] == '+')
 		i++;
 	while (av[i])
 	{
-		if (!ft_isalnum(ft_atoi(&av[i])))
-			return (1);
+		if (!ft_isalnum(av[i]))
+			return (0);
 		i++;
 	}
-	return (0);
+	return (1);
 }
 
-void	check_args(t_stack **lst, int ac, char **av)
+int	check_zero(char *av)
+{
+	int	i;
+
+	i = 0;
+	while (av[i] && av[i] == '0')
+	{
+		i++;
+	}
+	if (av[i] == '\0')
+		return (0);
+	return (1);
+}
+
+long	ft_atol(const char *str)
+{
+	int			i;
+	int			sign;
+	long int	res;
+
+	i = 0;
+	res = 0;
+	sign = 1;
+	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\v'
+		|| str[i] == '\f' || str[i] == '\r' || str[i] == ' ')
+	{
+		i++;
+	}
+	if (str[i] == '+' || str[i] == '-')
+	{
+		if (str[i] == '-')
+			sign = -1;
+		i++;
+	}
+	while (ft_isdigit(str[i]) && str[i] != '\0')
+	{
+		res = res * 10 + str[i] - 48;
+		i++;
+	}
+	return (sign * res);
+}
+
+int	check_arg(char **av)
 {
 	int	i;
 	long	tmp;
-	char	**argv;
 
-	i = 0;
-	if (ac == 2)
+	i = 1;
+	if (check_doublon(av))
+		return (0);
+	while (av[i])
 	{
-		argv = ft_split(av[1], ' ');
-		if (!argv)
-			return ;
-	}
-	else
-	{
-		i = 1;
-		argv = av;
-	}
-	while (argv[i])
-	{
-		tmp = (long)ft_atoi(argv[i]);
-		if (tmp < -2147483648 || tmp > 2147483647)
-		//  (check_overflow(tmp))
-			// ft_error("Error");
-			ft_putendl_fd("Error", 1);
-		if (check_num(av[i]))
-			ft_putendl_fd("Error", 1);
-			// ft_error("Error");
-		if (check_doublon(av))
-			ft_putendl_fd("Error", 1);
-			// ft_error("Error");
-		ft_lstadd_back(lst, tmp);
+		if (!check_num(av[i]))
+			return (0);
+		// if (!check_zero(av[i]))
+		// 	return (0);
+		tmp = ft_atol(av[i]);
+		if (!check_overflow(tmp))
+			return (0);
 		i++;
 	}
-	if (ac == 2)
-		free(argv);
-	//	ft_free(argv);
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: mcauchy- <mcauchy-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 20:45:28 by mcauchy-          #+#    #+#             */
-/*   Updated: 2024/12/26 20:51:15 by mcauchy-         ###   ########.fr       */
+/*   Updated: 2025/01/04 15:31:19 by mcauchy-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,18 @@ t_stack	*ft_lstnew(int nb)
 	return (new);
 }
 
+void	free_stack(t_stack **lst)
+{
+	t_stack	*to_free;
+
+	while (lst)
+	{
+		to_free = (*lst);
+		*lst = (*lst)->next;
+		free(to_free);
+	}
+}
+
 void	ft_lstadd_back(t_stack **lst, t_stack *new)
 {
 	t_stack	*last_elm;
@@ -112,8 +124,8 @@ int	ft_lstsize(t_stack *lst)
 	i = 0;
 	while (lst)
 	{
-		i++;
 		lst = lst->next;
+		i++;
 	}
 	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: mcauchy- <mcauchy-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 20:45:56 by mcauchy-          #+#    #+#             */
-/*   Updated: 2025/01/02 17:31:23 by mcauchy-         ###   ########.fr       */
+/*   Updated: 2025/01/04 17:45:02 by mcauchy-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@ int		swap(t_stack **lst);
 int		sa(t_stack **stack_a);
 int		sb(t_stack **stack_b);
 int		ss(t_stack **stack_a, t_stack **stack_b);
+int		push(t_stack **dest, t_stack **src);
+int		pa(t_stack **stack_a, t_stack **stack_b);
+int		pb(t_stack **stack_a, t_stack **stack_b);
 int		rotate(t_stack **lst);
 int		ra(t_stack **stack_a);
 int		rb(t_stack **stack_b);
@@ -66,6 +69,29 @@ int		check_overflow(long nb);
 int		ft_len(char **av);
 int		check_doublon(char **av);
 int		check_num(char *av);
-void	check_args(int ac, char **av);
+int		check_zero(char *av);
+long	ft_atol(const char *str);
+int		check_arg(char **av);
+
+// PUSH_SWAP //
+
+void	ft_error(char *exit_msg, int exit_code);
+void	ft_free(char **to_free);
+t_stack	*initialize_stack(char **av);
+char	**parse_args(int ac, char **av);
+int		is_sorted(t_stack **lst);
+void	push_swap(t_stack **stack_a, t_stack **stack_b);
+
+// SIMPLE SORT //
+
+int	find_max(t_stack *lst);
+int	find_min(t_stack *stack_a);
+int	max_bits(t_stack **lst);
+void	sort_3(t_stack **lst);
+void	sort_5(t_stack **stack_a, t_stack **stack_b);
+
+// UTILS //
+
+void	free_stack(t_stack **lst);
 
 #endif

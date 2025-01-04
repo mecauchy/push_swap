@@ -6,7 +6,7 @@
 /*   By: mcauchy- <mcauchy-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 20:47:39 by mecauchy          #+#    #+#             */
-/*   Updated: 2024/12/26 18:23:07 by mcauchy-         ###   ########.fr       */
+/*   Updated: 2025/01/04 17:47:19 by mcauchy-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	swap(t_stack **lst)
 {
 	t_stack	*head;
 	t_stack	*tmp;
-	int 	swap;
+	int		swap;
 
 	if (ft_lstsize(*lst) < 2)
 		return (-1);
