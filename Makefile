@@ -6,13 +6,16 @@
 #    By: mcauchy- <mcauchy-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/26 20:45:33 by mcauchy-          #+#    #+#              #
-#    Updated: 2025/01/04 17:54:31 by mcauchy-         ###   ########.fr        #
+#    Updated: 2025/01/16 13:00:26 by mcauchy-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	push_swap
 
-SRCS_FILES	=	push_swap.c utils.c move.c singleton.c parsing.c simple_sort.c 
+SRCS_FILES	=	init.c move_p.c move_r.c move_rr.c move_s.c parsing.c	\
+				push_swap.c radix_sort.c simple_sort_utils.c 			\
+				simple_sort.c split.c utils_init_lst.c utils_list.c		\
+				utils_parse.c index.c
 
 SRC_DIR		=	srcs
 
@@ -28,24 +31,32 @@ RM			=	rm -rf
 
 CFLAGS		=	-Wall -Wextra -Werror
 
+GREEN		=	\033[1;32m
+
+YELLOW		=	\033[1;33m
+
+RED			=	\033[1;31m
+
+RESET		=	\033[0m
+
 all:		$(NAME)
 
 $(NAME):	$(OBJS)
 			@$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
-			@echo "Compilation done !"
+			@echo "$(GREEN)Compilation done !$(RESET)"
 
-%.o:		%.c $(HEADER)
-	@$(CC) $(CFLAGS) -c $< -o $@
-	@echo "Compilation of $< done !"
+%.o		:	%.c $(HEADER)
+			$(CC) $(CFLAGS) -c $< -o $@
+			@echo "Compilation of $< done !"
 
-clean:
+clean	:
 			/bin/rm -rf $(OBJS)
-			@echo "Objects deleted !"
+			@echo "$(RED)Objects deleted !$(RESET)"
 
-fclean:		clean
+fclean	:	clean
 			/bin/rm -rf $(NAME)
-			@echo "Executable deleted !"
+			@echo "$(YELLOW)Executable deleted !$(RESET)"
 
-re:			fclean all
+re		:	fclean all
 
 .PHONY:		all clean fclean re%
